@@ -1,0 +1,25 @@
+{%extends 'hire/basic.html'%}
+{%block body%}
+<div class="container">
+    <div class="row mt-4">
+        <h2>All Applications</h2>
+        <hr>
+        
+<ol type="1">
+    {%for item in data%}
+    <li><div class="col-md-2 blog-main">
+  <div class="list-group mx-2 my-2">
+    <a href="/media/{{item.files_resume}}"> <button type="button" class="list-group-item list-group-item-action ">Resume</button>
+      <a href="/media/{{item.files_cl}}"> <button type="button" class="list-group-item list-group-item-action ">Cover Letter</button>
+        <td><a href="/hire/accept/{{ item.app_id}}">Accept</a></td>
+        <td><a href="/hire/delete/{{ item.app_id}}">Delete</a></td>
+      </div></li> 
+     {%endfor%}
+    </ol>
+        </div>
+        </div>
+        </div>
+              </div>
+              </div>
+              </div>
+{%endblock%}

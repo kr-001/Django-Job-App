@@ -1,0 +1,51 @@
+{%extends 'jobs/basic.html'%}
+{%block body%}
+<div class="container mt-3">
+  <h3>Your Application status</h3>
+  <hr>
+  <div id="st-box">
+    <h4>
+      You are hired for jobs below:
+    </h4>
+    <hr>
+    
+    {%for item in jobs%}
+    <ol type="1">
+    <li>{{item.title}}</li>
+    </ol>
+    {%endfor%}
+  
+    
+  </div>
+  <div id="nd-box">
+    
+    <h4>
+      You are rejected for jobs below:
+    </h4>
+    <hr>
+    {%for item in rej%}
+    <ol type="1">
+    <li>{{item.title}}</li>
+    </ol>
+    {%endfor%}
+  </div>
+ </div>
+
+ {%endblock%}
+ {%block css%}
+ 
+#st-box {
+  float:left;
+  background-color:white;
+}
+#nd-box {
+  float:left;
+
+  margin-left:120px;
+}
+
+h1 {
+  color:Green;
+}
+</style>
+ {%endblock%}

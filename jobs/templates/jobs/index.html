@@ -1,0 +1,40 @@
+{%extends 'jobs/basic.html'%}
+{%block body%}
+<div class="container mt-3">
+    {%for c in context%}
+    {{c}}
+    {%endfor%}
+    {%if user.is_authenticated%}
+    {%endif%}
+    <h4>Welcome To Job Seeking and Listing Portal</h4>
+    <hr>
+    <div class="row my-2">
+        {% for item in job %}
+        <div class="col-md-3 mx-1">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3><strong class="d-inline-block mb-2 text-primary">
+                        {{item.job_title}}</h3>
+                    </strong>
+                    <h5 class="mb-0">{{item.company_name}}</h5>
+                    <div class="mb-1 text-muted"></div>
+                    <p class="card-text mb-auto">{{item.pub_date}}</p>
+                    <a href="jobPost/{{item.job_id}}" class="stretched-link">Read More..</a>
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:2%}
+    </div>
+    <div class="row my-2">
+        {%endif%}
+        {%endfor%}</div>
+        <hr>
+</div>
+{%endblock%}
+{%block js%}
+<script>
+window.setTimeout(function () {
+    location.href = "http://127.0.0.1:8000/jobs/";
+}, 300000); // refresh/redirect after 5 seconds.
+</script>
+{%endblock%}

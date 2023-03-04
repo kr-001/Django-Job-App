@@ -1,0 +1,24 @@
+{%extends 'jobs/basic.html'%}
+{%block body%}
+    <div class="container mt-5">
+      <h2>User Login Page</h2>
+      {% for message in messages %}
+       {{ message }}
+       {% endfor %}
+      <hr color="grey">
+    <form class="row g-3" method="POST" action="login">
+      {% csrf_token %}
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username">
+          </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="form-control" id="pass1" name="pass1">
+        </div>
+        <div class="col-12 mt-4 mb-2">
+          <button type="submit" class="btn btn-outline-success">Login</button>
+        </div>
+      </form>
+    </div>
+{%endblock%}

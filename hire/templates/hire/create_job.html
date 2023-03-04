@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>New Job Listing</title>
+</head>
+<body>
+    <div class="container text-center">
+        <h3>Add a JOB</h3>
+        <hr>
+    </div>
+    <div class="container mt-2">  
+<form method="POST" action="create_job">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Role Name</label>
+      <input type="text" class="form-control"  name="role_name">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Company</label>
+        <input type="text" class="form-control" id="company" name="company">
+      </div>
+    <div class="mb-3">
+      <label  class="form-label">Location</label>
+      <input type="text" class="form-control" id="location" name="location">
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Salary(INR)</label>
+        <input type="text" class="form-control" id="salary" name="salary">
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Experience Required</label>
+        <input type="text" class="form-control" id="exp" name="exp">
+      </div>
+      <label  class="form-label">Job Description</label>
+      <div class="mb-10">
+        <input type="text" class="description" id="desc" name="desc">
+      </div>
+    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+  </form>
+</div>
+
+</body>
+
+<style>
+  .description
+  {
+    height: 200px;
+    width: 50%;
+  }
+</style>

@@ -1,0 +1,40 @@
+{% extends 'jobs/basic.html' %}
+{%block title%}
+Job Listing
+{%endblock%}
+{%block css%}
+
+
+{%endblock%}
+{%block body%}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-8 blog-main">
+            <h3 class="pb-4 mb-4 font-italic border-bottom ">
+            {{item.job_title}}
+            </h3>
+            <div class="blog-post">
+                <h5>Job Description: </h5>
+                <p>{{item.job_description}}</p>
+                <p>Experience Required : {{item.experience}} Years or more</p>
+                <a href="/jobs/upload/{{item.job_id}}">Apply Now!</a>
+            </div><!-- /.blog-post -->
+        </div><!-- /.blog-main -->
+        <aside class="col-md-4 blog-sidebar">
+            <div class="p-4 mb-3 bg-light rounded">
+                <h4 class="font-italic">About</h4>
+                <p class="mb-0">Created By<em> {{item.company_name}}</em> on {{item.pub_date}} </p>
+            </div>
+            <div class="p-4">
+                <h4 class="font-italic">Contact Us On: </h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ol>
+            </div>
+        </aside><!-- /.blog-sidebar -->
+    </div>
+    </div>
+    {%endblock%}
+ 
