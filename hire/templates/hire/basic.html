@@ -13,7 +13,7 @@
   <title>{% block title%} {% endblock %}</title>
   <style>
     {% block css %}
-
+      
       {% endblock %}
   </style>
 </head>
@@ -27,17 +27,24 @@
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+     
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           </li>
         </ul>
+        
       </div>
     </div>
+    <form class="d-flex mx-2" role="search" action="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
     {%if user.is_authenticated%}
     <div class="dropdown">
       <button class="btn btn-outline-light dropdown-toggle mx-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Welcome,{{user.username}}
       </button>
+     
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="/hire/logout">Logout</a></li>
         <li><a class="dropdown-item" href="/hire/dashboard">Manage Applications</a></li>
@@ -114,10 +121,6 @@
                 <button type="submit" class="btn btn-primary">Create Account</button>
               </div>
             </form>
-          </div>
-          <div class="modal-footer">
-            <p><b>Note that!! User account holders can only ask questions or comment/reply on the blog/post.</b></p>
-            <p><a href="adminRegister">Apply for Admin Account</a></b></p>
           </div>
         </div>
       </div>

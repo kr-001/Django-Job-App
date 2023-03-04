@@ -16,13 +16,22 @@ Job Listing
             <div class="blog-post">
                 <h5>Job Description</h5>
                 <p class="blog-post-title">{{item.job_description}}</p>
+                <h5>Branch/Year</h5>
+                <p>{{item.branch}}</p>
+                <h5>Location</h5>
+                <p>{{item.location}}</p>
+                <h5>Experience Required</h5>
                 <p>{{item.experience}}</p>
+
             </div><!-- /.blog-post -->
+            <a class="btn btn-primary" href="/hire/applications/{{item.job_id}}" role="button">View Applications</a>
+            <a class="btn btn-danger" href="/hire/delete_job/{{item.job_id}}" role="button">Delete</a>
+            <a class="btn btn-warning" href="/hire/update/{{item.job_id}}" role="button">edit</a>
         </div><!-- /.blog-main -->
         <aside class="col-md-4 blog-sidebar">
             <div class="p-4 mb-3 bg-light rounded">
                 <h4 class="font-italic">About</h4>
-                <p class="mb-0">Created By<em> {{item.company_name}}</em> on {{item.pub_date}} </p>
+                <p class="mb-0">Company Name: <em> {{item.company_name}}</em></p>
             </div>
             <div class="p-4">
                 <h4 class="font-italic">Contact Us On: </h4>
@@ -33,6 +42,7 @@ Job Listing
                 </ol>
             </div>
         </aside><!-- /.blog-sidebar -->
+        
     </div>
     {%endblock%}
  

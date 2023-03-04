@@ -1,0 +1,28 @@
+{%extends 'hire/basic.html'%}
+{%block body%}
+<div class="container mt-5">
+    <h2>Update Record</h2>
+    <hr color="grey">
+    <form action="/hire/modify_job/{{ job.job_id}}" method="post">
+        {% csrf_token %}
+        Job Title:<br>
+        <input name="title" value="{{ job.job_title}}">
+        <br><br>
+        Company Name:<br>
+        <input name="cname" value="{{ job.company_name }}">
+        <br><br>
+        Location:<br>
+        <input name="loc" value="{{ job.location}}">
+        <br><br>
+        Salary:<br>
+        <input name="sal" value="{{ job.salary }}">
+        <br><br>
+        Experience:<br>
+        <input name="exp" value="{{ job.experience }}">
+        <br><br>
+        <button type="submit btn-btn-primary">Update Job</button>
+        </form>
+  </div>
+
+
+{%endblock%}

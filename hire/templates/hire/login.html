@@ -6,7 +6,8 @@
        {{ message }}
        {% endfor %}
       <hr color="grey">
-    <form class="row g-3" method="POST" action="login">
+
+    <form class="row g-3" method="POST" action="/hire/login">
       {% csrf_token %}
         <div class="col-md-6">
             <label for="inputPassword4" class="form-label">Username</label>

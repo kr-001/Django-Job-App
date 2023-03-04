@@ -6,12 +6,13 @@ from django.contrib.auth import authenticate,logout,login
 from django.http import HttpResponse
 from .models import jobPost,accepted,deleted
 from jobs.models import *
-import os 
+from django.contrib.auth.decorators import login_required
 from django.template import loader
 from os import listdir
 from django.conf import settings
 from django.views.generic.base import TemplateView
 
+@login_required(login_url='/hire/login')
 def index(request):
     data = jobPost.objects.all()
     print(data)
@@ -62,7 +63,7 @@ def login_user(request):
             return redirect('/hire/login',{'messages': messages})
     else:
         return render(request,'hire/login.html')
-    
+  
 def logout_user(request):
     try:
         logout(request)
@@ -79,7 +80,8 @@ def createJob(request):
         salary = request.POST.get('salary')
         exp = request.POST.get('exp')
         desc = request.POST.get('desc')
-        job=jobPost(job_title = job_title , company_name = company_name , location = location , salary = salary , experience = exp,job_description = desc)
+        branch = request.POST.get('branch')
+        job=jobPost(job_title = job_title , company_name = company_name , location = location , salary = salary , experience = exp,job_description = desc,branch = branch)
         job.save()
         return redirect('/hire')
     else:
@@ -153,6 +155,48 @@ def delete(request,id):
     print('persons->>>>',person)
     return render(request , 'hire/dashboard.html',{'person':person})
     
-# def hired(request):
-#     person = accepted.objects.all()
-#     return render(request,'hire/dashboard.html',{'person' : person})
+def hired(request):
+    person = accepted.objects.all()
+    return render(request,'hire/dashboard.html',{'person' : person})
+
+def delete_job(request,id):
+    job = jobPost.objects.filter(job_id = id)
+    job.delete()
+    jobs = jobPost.objects.all()
+    return redirect('/hire/dashboard' ,{'job' : jobs} )
+
+
+def modify_job(request,id):
+    if request.method == "POST":
+        job = jobPost.objects.get(job_id = id)
+        title = request.POST.get('title')
+        cname = request.POST.get('cname')
+        loc = request.POST.get('loc')
+        sal = request.POST.get('sal')
+        exp = request.POST.get('exp')
+        job.job_title = title
+        job.company_name = cname
+        job.location = loc
+        job.salary = sal
+        job.experience = exp
+        job.save()
+
+        return redirect('/hire/')
+    else:
+        m = messages.error(request , "Error Occured")
+        return render(request , 'hire/index.html' , {'msg' : m})
+
+def update_record(request,id):
+    job = jobPost.objects.filter(job_id = id)[0]
+    print(job)
+    return render(request , 'hire/updateRecord.html',{'job' : job})
+
+def search(request):
+    search_d = request.GET['search']
+    data = jobPost.objects.filter(job_title__contains=search_d)
+    print(data)
+    return render(request , 'hire/index.html' , {'job' : data})
+
+
+def admin(request):
+    return render(request,'hire/admin.html')

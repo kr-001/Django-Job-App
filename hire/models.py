@@ -5,6 +5,7 @@ class jobPost(models.Model):
     job_id = models.AutoField(primary_key=True)
     job_title = models.CharField(max_length=50,default='0')
     company_name = models.CharField(max_length=50,default='0')
+    branch = models.CharField(max_length=10,default=None)
     location = models.CharField(max_length=50,default='0')
     salary = models.CharField(max_length=50,default='0')
     experience = models.CharField(max_length=50,default='0')
