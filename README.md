@@ -1,6 +1,8 @@
 # Django-Job-App
 An Job Application Based on Django framework
 
+link for sreen recording  : https://drive.google.com/file/d/1nH0BXyEhKShZ_OZUcPw6u4JW6R64dpJa/view?usp=sharing
+----------------------------------------------
 This Project contains:- 
     1. Main Project : jobapp
     2. 1st app : hire(for employers)
